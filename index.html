@@ -27,8 +27,8 @@
       margin-inline: auto;
 
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      grid-template-rows: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(4, 6rem);
+      grid-template-rows: repeat(6, 6rem);
 
       gap: .25rem;
 
@@ -40,17 +40,35 @@
 
       font-size: 2rem;
 
-      >div {
-        width: 6rem;
-        height: 6rem;
-
+      * {
         text-align: center;
         place-content: center;
 
-        background-color: white;
+        --button-color: white;
+
+        background-color: var(--button-color);
         box-shadow: var(--shadow);
 
         border-radius: 100rem;
+
+        &:not(.result) {
+
+
+          cursor: pointer;
+          user-select: none;
+
+          transition-property: background-color;
+          transition-duration: .1s;
+          transition-timing-function: ease-out;
+
+          &:hover {
+            background-color: color-mix(in oklch, var(--button-color) 98%, black);
+          }
+
+          &:active {
+            background-color: color-mix(in oklch, var(--button-color) 90%, black);
+          }
+        }
       }
 
       .result {
@@ -67,13 +85,13 @@
       }
 
       .modifier {
-        background-color: color-mix(in oklab, var(--theme) 20%, white);
+        --button-color: color-mix(in oklab, var(--theme) 20%, white);
 
         border-radius: 2rem;
 
         &.strong {
           color: white;
-          background-color: var(--theme);
+          --button-color: var(--theme);
         }
       }
     }
@@ -82,7 +100,7 @@
 
 <body>
   <main>
-    <div class="result" dir="rtl">123,456,789,012</div>
+    <div class="result" dir="rtl">123,456,789,012,345</div>
 
     <div class="modifier strong">AC</div>
     <div class="modifier">()</div>
