@@ -82,7 +82,9 @@
         box-sizing: content-box;
         grid-column: 1 / -1;
 
-        text-align: start;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
         padding-inline: 2rem;
 
         overflow: hidden;
@@ -106,7 +108,7 @@
 
 <body>
   <main>
-    <!-- <div class="result" dir="rtl">123,456,789,012,345</div>
+    <!-- <div class="result">123,456,789,012,345</div>
 
     <div class="modifier strong">AC</div>
     <div class="modifier">()</div>
@@ -141,7 +143,6 @@
 
     const result = $("<div>", {
       class: "result",
-      dir: "rtl",
       text: "0",
     });
     const calc = {
