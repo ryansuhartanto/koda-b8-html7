@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <script type="importmap">
+    {
+      "imports": {
+        "jquery": "https://esm.sh/jquery@4"
+      }
+    }
+  </script>
+
   <style>
     body {
       margin: 0;
@@ -100,7 +108,7 @@
 
 <body>
   <main>
-    <div class="result" dir="rtl">123,456,789,012,345</div>
+    <!-- <div class="result" dir="rtl">123,456,789,012,345</div>
 
     <div class="modifier strong">AC</div>
     <div class="modifier">()</div>
@@ -125,8 +133,124 @@
     <div>0</div>
     <div>&period;</div>
     <div>&#x232B;</div>
-    <div class="modifier strong">&equals;</div>
+    <div class="modifier strong">&equals;</div> -->
   </main>
+
+  <script type="module">
+    import $ from "jquery";
+
+    await $.ready;
+
+    const result = $("<div>", {
+      class: "result",
+      dir: "rtl",
+      text: "0",
+    });
+    const stack = {
+      _s: "",
+      get top() {
+        return this._s;
+      },
+      set top(v) {
+        this._s = v;
+        result.text(v);
+      },
+
+      append(v) {
+        this.top = this.top + v;
+      },
+      pop() {
+        this.top = this.top.slice(0, -1);
+      },
+    }
+
+    $("main").append(
+      result,
+
+      $("<div>", {
+        class: "modifier strong",
+        text: "AC",
+      }),
+      $("<div>", {
+        class: "modifier",
+        text: "()",
+      }),
+      $("<div>", {
+        class: "modifier",
+        html: "&percnt;",
+      }),
+      $("<div>", {
+        class: "modifier",
+        html: "&divide;",
+      }),
+
+      $("<div>", {
+        text: "7",
+        click: () => { stack.append(7) },
+      }),
+      $("<div>", {
+        text: "8",
+        click: () => { stack.append(8) },
+      }),
+      $("<div>", {
+        text: "9",
+        click: () => { stack.append(9) },
+      }),
+      $("<div>", {
+        class: "modifier",
+        html: "&times;",
+      }),
+
+      $("<div>", {
+        text: "4",
+        click: () => { stack.append(4) },
+      }),
+      $("<div>", {
+        text: "5",
+        click: () => { stack.append(5) },
+      }),
+      $("<div>", {
+        text: "6",
+        click: () => { stack.append(6) },
+      }),
+      $("<div>", {
+        class: "modifier",
+        html: "&minus;",
+      }),
+
+      $("<div>", {
+        text: "1",
+        click: () => { stack.append(1) },
+      }),
+      $("<div>", {
+        text: "2",
+        click: () => { stack.append(2) },
+      }),
+      $("<div>", {
+        text: "3",
+        click: () => { stack.append(3) },
+      }),
+      $("<div>", {
+        class: "modifier",
+        html: "&plus;",
+      }),
+
+      $("<div>", {
+        text: "0",
+        click: () => { stack.append(0) },
+      }),
+      $("<div>", {
+        html: "&period;",
+      }),
+      $("<div>", {
+        html: "&#x232B;",
+      }),
+      $("<div>", {
+        class: "modifier strong",
+        html: "&equals;",
+      }),
+    );
+  </script>
 </body>
 
 </html>
