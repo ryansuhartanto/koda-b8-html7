@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
-  <script type="importmap">
+  <!-- <script type="importmap">
     {
       "imports": {
         "jquery": "https://esm.sh/jquery@4"
       }
     }
-  </script>
+  </script> -->
+  <script data-main="src/app" src="https://unpkg.com/requirejs@2.3.8/require.js"></script>
 
   <style>
     body {
@@ -136,7 +137,7 @@
     <div class="modifier strong">&equals;</div> -->
   </main>
 
-  <script type="module">
+  <!-- <script type="module">
     import $ from "jquery";
 
     await $.ready;
@@ -312,7 +313,7 @@
         click: () => calc.equals(),
       }),
     );
-  </script>
+  </script> -->
 </body>
 
 </html>
